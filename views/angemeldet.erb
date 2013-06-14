@@ -6,6 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js"
 			data-dojo-config="isDebug: true,parseOnLoad: true"></script>
+		<script src="../main.js"></script>
 	  	<script src="../header.js"></script>
 	  	<script src="../posts.js"></script>
 	  	<script src="../tabs.js"></script>
@@ -23,7 +24,8 @@
 
 	</head>
 
-	<body onload="get_user();get_tabs();get_posts();">
+
+	<body onload="main()">
 		<div id="header">
 		    <div id="user"></div>
 		    , du bist Angemeldet :D
@@ -43,7 +45,7 @@
 		<div id="submit">
 		  <form name="Textfeld" action="/posten" method="post">
 			  <textarea name="content" cols="50" rows="3"></textarea><br>
-			  <input name="room" type="text" size="1">
+			  <input type="hidden" name="room" id="room" value="">
 			  <input type="submit" value= "Absenden">		
 		  </form>
 

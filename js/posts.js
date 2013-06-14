@@ -1,12 +1,16 @@
-function get_posts(room_nr) {
-	if (room_nr == undefined) {
-	  room_nr = 1; //TODO: public room ermitteln
+function get_posts(room_nr_) {
+	if (room_nr_ == undefined) {
+	  room_nr_ = room_nr; 
 	}
+	else{
+	  room_nr = room_nr_;	//update global room_nr with tab value
+	}
+	dojo.byId("room").value = room_nr;
 	dojo.xhrGet({
 		url: "/post",
 		handleAs: "json",
 		content: {
-			room: room_nr
+			room: room_nr_
 		},
 		load: function(newContent) {
 			

@@ -103,32 +103,24 @@ end
 
 def create_new_post
 
-	post = Post.new(	
+	post = Post.create(	
 	
 	:content 	=> params[:content],
 	:timestamp 	=> Time.now,
 	:user_id	=> session[:user_id],
-	:room_id	=> params[:room]
-
+	:room_id	=> params[:room],
 	)
-
-	post.save
-
-	redirect "/room/#{params[:room]}"
-
+	redirect "/room"
 end
 
 def create_new_room
 
-	room = Room.new(	
+	room = Room.create(	
 
 		:name 		=> params[:room_name],
 		:timestamp 	=> Time.now,
-		:user_id	=> session[:user_id]
-	
+		:user_id	=> session[:user_id],
 	)
-
-	room.save
 
 end
 
