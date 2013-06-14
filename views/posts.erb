@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+    
+  <html>
+    <body>
+    
+    <% for thisPost in @posts %>
+
+	<font size="1,5">
+		Post Nummer <%= thisPost.id %> 
+		von <%= @users.get(thisPost.user_id).name %> 
+		am <%= thisPost.timestamp %>
+		in <%= @rooms.get(thisPost.room_id).name %>: 
+		<a href ="/delete_post/<%= thisPost.id %>"> löschen </a>
+	</font> 
+
+	<br>
+	
+	<font size="3">	
+		<%= thisPost.content %>
+	</font>
+	
+	<br><br>
+    
+    <% end %>
+
+ </body>
+</html>

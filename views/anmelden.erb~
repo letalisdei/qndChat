@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>		
+
+	<head>
+		<script language="javascript" src="/sha256.js"></script>
+		<script language="javascript">
+			<!--
+		  	function sha256anm() {
+		    		str1 = document.anm.name.value + "*" + document.anm.PW.value;
+		    		document.anm.PW.value = sha256_digest(str1);
+		    		document.anm.submit();
+		  	}
+			// -->
+		</script>
+	</head>
+
+	<body>
+
+		<form action="/log_in" method="post" name="anm">
+			Name: <input name="name" type="text">
+			<a href="/reg">Registrieren</a><br>
+			Passwort: <input name="PW" type="password">
+			<input onclick="javascript:sha256anm()" type="button" value="anmelden">
+		</form>
+		
+		<br>
+		<br>
+
+		<% for thisPost in @posts %>
+		    <font size="1,5">
+				Post Nummer <%= thisPost.id %> von <%= @user.get(thisPost.user_id).name %> am <%= thisPost.timestamp %>: 
+			</font>
+
+			<br>
+
+			<font size="3">
+				<%= thisPost.content %>
+			</font>
+
+			<br>
+			<br>
+
+		<% end %>
+
+	</body>
+
+</html>

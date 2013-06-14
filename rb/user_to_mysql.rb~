@@ -1,0 +1,9 @@
+require 'data_mapper'
+
+@user = User.create(
+
+	:name	=> 'letalisdei'
+	:pwhash	=> '8021262fc23e5c5f86ef4fe8fc41de85ec84f923d24c373d61fd75b46b4bedb6'
+	:mail	=> 'nielsjanson@gmail.com'
+
+)

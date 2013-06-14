@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+    
+  <html>
+    <body>
+    
+    <% for thisPost in @user %>
+
+    <p><%= thisPost.id %> <%= thisPost.name %> <%= thisPost.mail %>
+	<a href ="/delete_user/<%= thisPost.id %>"> löschen </a> <br>
+	Letzter Login: <%= thisPost.lastlogin %>
+</p>
+    
+    <% end %>
+    
+ </body>
+</html>

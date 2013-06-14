@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+    
+  <html>
+    <body>
+    
+    <% for thisPost in @threads %>
+
+    <p><%= thisPost.id %>
+
+</p>
+    
+    <% end %>
+    
+ </body>
+</html>

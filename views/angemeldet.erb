@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>		
+
+	<head>
+	  <title>qndChat</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js"
+			data-dojo-config="isDebug: true,parseOnLoad: true"></script>
+	  	<script src="../header.js"></script>
+	  	<script src="../posts.js"></script>
+	  	<script src="../tabs.js"></script>
+		<style type="text/css">
+		
+	      div { border-width:1px; border-style:solid;}
+	      #tab { border-width:1px; border-style:solid; float:left;}
+	      #tabs { border-width:1px; border-style:none; float:left;}
+	      #user {float: left;border-style:none;}
+	      #header {float: left;border-style:none;}
+	      #textwindow {float: left;border-style:none;}
+	      #submit {clear: left;border-style:none;}
+	      
+	      </style>
+
+	</head>
+
+	<body onload="get_user();get_tabs();get_posts();">
+		<div id="header">
+		    <div id="user"></div>
+		    , du bist Angemeldet :D
+		    <br>
+		    <a href="/log_out">Abmelden</a>
+		</div>
+		
+		<br><br>
+		
+		<div id ="textwindow">
+		  <div id="tabs"></div>
+		  <br>
+		  <div id="posts"></div>
+		</div>
+		
+		
+		<div id="submit">
+		  <form name="Textfeld" action="/posten" method="post">
+			  <textarea name="content" cols="50" rows="3"></textarea><br>
+			  <input name="room" type="text" size="1">
+			  <input type="submit" value= "Absenden">		
+		  </form>
+
+		  <a href="/new_room">Neuen Raum erstellen</a>
+		</div>
+	</body>
+</html>

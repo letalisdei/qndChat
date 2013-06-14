@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+    
+  <html>
+    <body>
+    
+    <% for thisPost in @user %>
+
+    <h2><%= thisPost.id %></h2>
+    <p><%= thisPost.name %></p>
+    
+    <% end %>
+    
+ </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Demo: Fetch JSON Data</title>
+		<!-- load dojo and provide config via data attribute -->
+		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js"
+				data-dojo-config="isDebug: true,parseOnLoad: true">
+		</script>
+		<script>
+			// Function that refreshes a node's content
+			function getJSON() {
+				// Using dojo.xhrGet, as no information is being sent -- only requesting
+				dojo.xhrGet({
+					// The URL of the request
+					url: "/test.json",
+					// Handle as JSON Data
+					handleAs: "json",
+					content: {
+						room: "1" 
+					},
+					// The success callback with result from server
+					load: function(newContent) {
+						console.info("JSON loaded from server:  ",newContent);
+						
+						var contentNode = dojo.byId("contentNode");
+						var buffer = "";
+						
+						dojo.forEach(newContent, function(post){
+						
+						buffer += post.user_id + ": " + post.content +"<br>";
+						
+						});
+						
+						contentNode.innerHTML = buffer;
+						
+						
+					},
+				});
+			}
+
+		</script>
+	</head>
+	<body>
+		<h1>Demo: Fetch JSON Data</h1>
+
+		<button id="getJson" onClick="getJSON();">Get JSON</button>
+		<br /><br />
+
+		<div id="contentNode"></div>
+
+	</body>
+</html>

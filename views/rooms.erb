@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+    
+  <html>
+    <body>
+    
+    <% for thisPost in @room %>
+
+    <p><%= thisPost.id %> <%= thisPost.name %> <%= thisPost.timestamp %> <%= thisPost.user_id %> 
+	<a href ="/delete_room/<%= thisPost.id %>"> löschen </a>
+
+</p>
+    
+    <% end %>
+    
+ </body>
+</html>

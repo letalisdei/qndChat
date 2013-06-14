@@ -1,0 +1,7 @@
+<!DOCTYPE HTML>
+<html>		
+	<body>
+		Falsches Passwort <br>
+		<a href="/reg">Zurück zur Anmeldung</a>
+	</body>
+</html>

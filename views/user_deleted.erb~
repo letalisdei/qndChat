@@ -1,0 +1,7 @@
+<!DOCTYPE HTML>
+<html>		
+	<body>
+		User wurde gelöscht! <br>
+		Zurück zum <a href="/admin">Admin-Bereich</a>
+	</body>
+</html>

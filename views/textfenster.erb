@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html>	
+<body>
+
+<% for thisPost in @posts %>
+	<div style="font-size:10px;padding-left:5px;padding-top:10px;color:grey;">
+		Post Nummer <%= thisPost.id %> von <%= @users.get(thisPost.user_id).name %> am <%= thisPost.timestamp %>: 
+	</div>
+	
+	<div style="font-size:16px;padding-left:10px;">
+		<%= thisPost.content %>
+	</div>
+<% end %>
+
+</body>
+</html>

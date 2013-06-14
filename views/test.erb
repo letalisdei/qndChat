@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Demo: JSONP and dojo.io.script</title>
+		<!-- load dojo and provide config via data attribute -->
+		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js"
+				data-dojo-config="isDebug: true,parseOnLoad: true">
+		</script>
+		<script>
+			// dojo.io.script is an external dependency, so it must be required
+			dojo.require("dojo.io.script");
+
+			// Gets content from twitter
+			function getTweets() {
+				// dojo.io.script is an external dependency, so it must be required
+				dojo.require("dojo.io.script");
+
+				// When the resource is ready
+				dojo.ready(function() {
+					// Output message to DOM
+					var postcontainer = dojo.byId("postcontainer");
+					// Use the get method
+					dojo.io.script.get({
+						// The URL to get JSON from Twitter
+						url: "/test.json",
+						// The callback paramater
+						handleAs: "json",
+						// The content to send
+						content: {
+							q: "@news" // 
+						},
+						// The success callback
+						load: function(content) {  // Twitter sent us information!
+							// Log the result to console for inspection
+							console.info("JSON return: ",content);
+							// Output the content to a DOM element
+							// Or output a "no content" message
+							var message = "";
+							// Start the list
+							message += "<ul>";
+							// For every post returned
+							dojo.forEach(content.posts,function(post) {
+								message += "<li>" + post.user + " said: " + post.text + "</li>";
+							});
+							//End the list
+							message += "</ul>";
+							// Output message to DOM
+							postcontainer.innerHTML = message;
+						},
+					});
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Demo: JSONP and dojo.io.script</h1>
+
+		<button id="getJson" onClick="getTweets();">Get Tweets from Twitter</button>
+		<br /><br />
+
+		<div id="postcontainer"></div>
+
+	</body>
+</html>

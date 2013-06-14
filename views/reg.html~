@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>	
+
+	<head>
+		<script language="javascript" src="/sha256.js"></script>
+		<script language="javascript">
+			<!--
+		  	function sha256submit() {
+					alert("funktion wird gestartet");
+		    		str1 = document.reg.name.value			+"*"+document.reg.PW.value;
+		    		document.reg.PW.value = sha256_digest(str1);
+					alert("sha256 der erste wurde berechenet");
+					str2 = document.reg.name.value			+"*"+document.reg.PW2.value;
+					document.reg.PW2.value = sha256_digest(str2);
+					alert("sha256 der zweite wurde berechnet");
+		    		document.reg.submit();
+					alert("submin fand statt");
+		  	}
+			// -->
+		</script>
+	</head>
+	
+	<body>
+
+		<form name="reg" action="/registrieren" method="post">
+			Benutzername: <input name="name" type="text">
+			<br>
+			Passwort: <input name="PW" type="password">
+			<br>
+			Passwort wiederholen: <input name="PW2" type="password">
+			<br>
+			E-Mail Adresse: <input name="mail" type="text">
+			<br>
+			<input onclick="javascript:sha256submit()" type="button" value="Registrieren">
+		</form>
+	</body>
+
+
+
+</html>
