@@ -1,8 +1,5 @@
 require 'sinatra'
 require 'data_mapper'
-require 'dm-core'
-require 'dm-migrations'
-require 'dm-aggregates' 
 require 'json'
 require 'pry'
 require 'digest'
