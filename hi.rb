@@ -1,8 +1,6 @@
-require 'sinatra'
-require 'data_mapper'
-require 'json'
-require 'pry'
-require 'digest'
+require 'bundler'
+Bundler.require :default
+
 require './rb/mysqlbuild'
 require './rb/create'
 require './rb/direct'
@@ -165,7 +163,7 @@ get '/post' do
 
   if User.get(user).rooms.get(room)
 
-   # binding.pry
+    binding.pry
     content_type :json
     #if params[:q] == 'newposts' 
     Post.all(:room_id => room).to_json
