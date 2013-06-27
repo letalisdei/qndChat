@@ -1,12 +1,23 @@
 <!DOCTYPE HTML>
 <html>	
-	
-	<body>
+  <head>
+
+    
+		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js"
+			data-dojo-config="isDebug: true,parseOnLoad: true"></script>
+		<script src="../get_users.js"></script>
+
+  </head>
+
+	<body onload="get_users()">
 
 		<form name="new_room" action="/create_room" method="post">
 			Name des Raums: <input name="room_name" type="text">
 			<br>
-			<input type="submit">
+      <p id="user_select">
+      </p>
+
+      <input type="submit">
 		</form>
 	</body>
 

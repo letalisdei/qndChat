@@ -1,57 +1,56 @@
 <!DOCTYPE HTML>
 <html>		
-
-	<head>
-	  <title>qndChat</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js"
-			data-dojo-config="isDebug: true,parseOnLoad: true"></script>
-		<script src="../main.js"></script>
-	  	<script src="../header.js"></script>
-	  	<script src="../posts.js"></script>
-	  	<script src="../tabs.js"></script>
-		<style type="text/css">
-		
-	      div { border-width:1px; border-style:solid;}
-	      #tab { border-width:1px; border-style:solid; float:left;width:24.7%;}
-	      #tabs { border-width:1px; border-style:solid; float:left;width:100%;}
-	      #user {float: left;border-style:none;}
-	      #header {float: left;border-style:none;}
-	      #textwindow {float: left;border-style:solid;width:70%}
-	      #submit {clear: left;border-style:none;}
-	      #posts {clear: left;border-style:solid;width:100%;}
-	      #post 
-	      body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;}
-	      
-	      </style>
-	</head>
+  <head>
+    <title>qndChat</title>
+    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js"
+      data-dojo-config="isDebug: true,parseOnLoad: true"></script>
+    <script src="../main.js"></script>
+    <script src="../header.js"></script>
+    <script src="../posts.js"></script>
+    <script src="../tabs.js"></script>
+    <script src="../get_users.js"></script>
+   <link rel="stylesheet" type="text/css" href="style.css"> 
 
 
-	<body onload="main()">
-		<div id="header">
-		    <div id="user"></div>
-		    , du bist Angemeldet :D
-		    <br>
-		    <a href="/log_out">Abmelden</a>
-		</div>
-		
-		<br><br>
-		
-		<div id ="textwindow">
-		  <div id="tabs"></div>
-		  <br>
-		  <div id="posts"></div>
-		</div>
-		
-		
-		<div id="submit">
-		  <form name="Textfeld" action="/posten" method="post">
-			  <textarea name="content" cols="50" rows="3"></textarea><br>
-			  <input type="hidden" name="room" id="room" value="">
-			  <input type="submit" value= "Absenden">		
-		  </form>
+  </head>
 
-		  <a href="/new_room">Neuen Raum erstellen</a>
-		</div>
-	</body>
+  <body onload="main()">
+
+
+    <div id="header">
+      <div id="user"></div>
+      , du bist Angemeldet :D
+      <br>
+      <a href="/log_out">Abmelden</a>
+    </div>
+
+    <div id="left">
+      Userlist:
+      <div id="user_select">
+      </div>
+      <a href="/new_room">Neuen Raum erstellen</a>
+    </div>
+
+    <div id="right">
+      Infos
+    </div>
+
+    <div id="middle">
+
+      <div id ="textwindow">
+        <div id="tabs"></div>
+        <ul id="posts"></ul>
+      </div>
+
+      <div id="submit">
+        <form name="Textfeld" action="/posten" method="post">
+          <textarea name="content" cols="50" rows="3"></textarea><br>
+          <input type="hidden" name="room" id="room" value="">
+          <input type="submit" value= "Absenden">		
+        </form>
+      </div>
+
+    </div>
+
+  </body>
 </html>

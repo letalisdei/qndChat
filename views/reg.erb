@@ -2,16 +2,12 @@
 <html>	
 
 	<head>
-		<script language="javascript" src="/sha256.js"></script>
 		<script language="javascript">
 			<!--
-		  	function sha256submit() {
+		  	function click_submit() {
 
 
 				if (document.reg.PW.value == document.reg.PW2.value) {
-
-			    		str1 = document.reg.name.value			+"*"+document.reg.PW.value;
-			    		document.reg.PW.value = sha256_digest(str1);
 			    		document.reg.submit();
 				}
 				else
@@ -35,7 +31,7 @@
 			<br>
 			E-Mail Adresse: <input name="mail" type="text">
 			<br>
-			<input onclick="javascript:sha256submit()" type="button" value="Registrieren">
+			<input onclick="javascript:click_submit()" type="button" value="Registrieren">
 		</form>
 	</body>
 

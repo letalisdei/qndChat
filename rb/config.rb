@@ -12,8 +12,9 @@ def config
 	DataMapper::Logger.new($stdout, :debug)
 
 	#In der Datenbank einloggen
-	DataMapper.setup(:default, 'mysql://root:auf der reise@localhost/chat')
-
+	
+  DataMapper.setup(:default, 'mysql://root:auf der reise@localhost/chat')
+	#DataMapper.setup(:default, 'sqlite::memory:')
 	#Session Settings einrichten
 	use Rack::Session::Pool, :expire_after => 1000000
 	set :session_secret, 'super secret'
@@ -21,5 +22,5 @@ def config
 
 	DataMapper.finalize
 	DataMapper.auto_upgrade!
-
+  #DataMapper.auto_migrate!
 end

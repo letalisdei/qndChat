@@ -1,0 +1,63 @@
+body {
+  color: black; background-color: white;
+  font-size:12px;
+  font-family: Arial;
+  margin: 0; padding: 1em;
+  min-width: 41em;
+}
+
+div#header {
+  margin: 0 0 10px; 
+  border: 1px dashed silver;
+}
+
+
+div#user {
+  float: left;
+}
+
+div#left {
+  float: left;
+  width: 200px;
+  height: 500px;
+  border: 1px dashed silver;
+}
+
+div#user_select{
+  height: 80%; 
+}
+
+div#middle {
+  margin: 0 210px 1em 210px;
+  border: 1px dashed silver;
+  height: 500px;
+}
+
+div#tabs{
+width: 100%;
+height: 10px;
+}
+
+div#tab { 
+  border-width:1px;
+  padding: 1px 2px 0px 2px;
+  border-style:solid;
+  float:left;
+}
+
+div#posts{
+}
+
+div#post{
+  float:;
+}
+
+div#right {
+  float: right; 
+  width: 200px;
+  height: 500px;
+  border: 1px dashed silver;
+}
+
+
+

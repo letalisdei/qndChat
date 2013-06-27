@@ -20,7 +20,7 @@ function get_posts(room_nr_) {
 			
 			dojo.forEach(newContent, function(post){
 			
-			buffer +=  '<div id = "post">' + post.content + '</div>';
+			buffer +=  '<li id = "post">' + post.content + '</li>';
 			
 			});
 			

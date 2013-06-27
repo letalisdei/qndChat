@@ -1,10 +1,11 @@
 function get_tabs() {
 	// Using dojo.xhrGet, as no information is being sent -- only requesting
+	//alert("tabs" + user);
 	dojo.xhrGet({
 		url: "/tabs",
 		handleAs: "json",
 		content: {
-			user: "1" 
+			user: user 
 		},
 		load: function(newContent) {
 			
