@@ -1,18 +1,22 @@
 function get_user() {
-	dojo.xhrGet({
+
+
+
+dojo.xhrGet({
 		url: "/header",
 		handleAs: "json",
 	     
-		load: function(newContent) {
-			console.info("JSON loaded from server:  ",newContent);
-			var contentNode = dojo.byId("user");
-			var buffer = "";
+		load: function(data) {
+			console.info("JSON loaded from server:  ",data);
+			var contentNode = dojo.byId("header");
+			var html = "";
 
-			user = newContent.id;
-			//alert ("getuser: " + user);
-			buffer = newContent.name;
-			
-			contentNode.innerHTML = buffer;
+
+var template = '{{name}}, du bist Angemeldet <br><a href="/log_out">Abmelden</a>'; 
+
+html = Mustache.to_html(template, data);	
+
+			contentNode.innerHTML = html;
 			
 		},
 	});
