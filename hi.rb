@@ -20,148 +20,162 @@ if Room.count == 0
 end
 
 if Post.count == 0
-    puts 'Create first Post!'
-    create_first_post
-  end
+  puts 'Create first Post!'
+  create_first_post
+end
 
 
-  get '/' do
-    #binding.pry	
+get '/' do
+  #binding.pry	
 
-    if  session[:value] == 'true'
-      go_to_public_room_logged_in
-    else	
-      go_to_public_room_logged_out	
-    end 
-  end
+  if  session[:value] == 'true'
+    go_to_public_room_logged_in
+  else	
+    go_to_public_room_logged_out	
+  end 
+end
 
 
-  post '/log_in' do
-    if @user = User.last(:name => params[:name])
-      hash = Digest::SHA256.hexdigest params[:PW]
-      if @user.pwhash == hash			
-        logged_in
-      else
-        erb :wrong_pw
-      end
+post '/log_in' do
+  if @user = User.last(:name => params[:name])
+    hash = Digest::SHA256.hexdigest params[:PW]
+    if @user.pwhash == hash			
+      logged_in
     else
-      erb :no_user
+      erb :wrong_pw
     end
+  else
+    erb :no_user
+  end
+end
+
+
+get '/log_out' do 
+  loggin_out
+end
+
+
+get '/reg' do
+  erb :reg
+end
+
+
+post '/registrieren' do
+  if User.last(:name => params[:name])
+    "Name schon vergeben"
+  elsif User.last(:mail => params[:mail])
+    "E-Mail Adresse schon vergeben"
+  else
+    create_new_user
+  end
+end
+
+
+post '/posten' do
+  create_new_post
+end
+
+
+get '/new_room' do
+  erb :new_room
+end
+
+
+post '/create_room' do
+  create_new_room
+end
+
+
+get '/admin' do
+  go_to_admin
+end
+
+
+get '/rooms' do 
+  go_to_rooms
+end
+
+
+get '/posts' do
+  go_to_posts
+end
+
+get '/accesses' do
+
+end
+
+get '/room' do
+  if session[:user_id]
+
+    @rooms = Room.all
+    erb :angemeldet
+  else
+    erb :no_room		
+  end
+end
+
+
+get '/delete_user/:id' do
+  delete_user	
+end
+
+get '/delete_post/:id' do
+  delete_post	
+end
+
+get '/delete_room/:id' do
+  delete_room	
+end
+
+get '/textfenster/:room_id' do
+
+  if session[:user_id] and Room.get(params[:room_id])
+    go_to_textfenster
+  else
+    erb :no_room		
   end
 
-
-  get '/log_out' do 
-    loggin_out
-  end
+end
 
 
-  get '/reg' do
-    erb :reg
-  end
+get '/*.css' do
+  content_type 'text/css'
+  File.read(File.join('css',params[:splat].first.to_s + '.css'))
+end
 
 
-  post '/registrieren' do
-    if User.last(:name => params[:name])
-      "Name schon vergeben"
-    elsif User.last(:mail => params[:mail])
-      "E-Mail Adresse schon vergeben"
-    else
-      create_new_user
+get '/*.js' do
+  content_type 'application/javascript'  
+  File.read(File.join('js',params[:splat].first.to_s + '.js'))	
+end
+
+get '/*.html' do
+  File.read(File.join('templates',params[:splat].first.to_s + '.html'))	
+end
+
+get '/post' do
+
+  user = session[:user_id]
+  room = params[:room]
+
+  if User.get(user).rooms.get(room)
+
+    content_type :json
+    #if params[:q] == 'newposts' 
+
+
+    data = Post.all(:room_id => room).map do |post|
+      {
+        id: post.id,
+        content: post.content,
+        created_at: post.created_at,
+        user_name: post.user.name,
+        user_id: post.user.id,
+      }
     end
+    data.to_json
   end
-
-
-  post '/posten' do
-    create_new_post
-  end
-
-
-  get '/new_room' do
-    erb :new_room
-  end
-
-
-  post '/create_room' do
-    create_new_room
-  end
-
-
-  get '/admin' do
-    go_to_admin
-  end
-
-
-  get '/rooms' do 
-    go_to_rooms
-  end
-
-
-  get '/posts' do
-    go_to_posts
-  end
-
-  get '/accesses' do
-
-  end
-
-  get '/room' do
-    if session[:user_id]
-
-      @rooms = Room.all
-      erb :angemeldet
-    else
-      erb :no_room		
-    end
-  end
-
-
-  get '/delete_user/:id' do
-    delete_user	
-  end
-
-  get '/delete_post/:id' do
-    delete_post	
-  end
-
-  get '/delete_room/:id' do
-    delete_room	
-  end
-
-  get '/textfenster/:room_id' do
-
-    if session[:user_id] and Room.get(params[:room_id])
-      go_to_textfenster
-    else
-      erb :no_room		
-    end
-
-  end
-
-
-  get '/*.css' do
-    content_type 'text/css'
-    File.read(File.join('css',params[:splat].first.to_s + '.css'))
-  end
-
-
-  get '/*.js' do
-    content_type 'text/javascript'  
-    File.read(File.join('js',params[:splat].first.to_s + '.js'))	
-  end
-
-  get '/post' do
-
-    user = session[:user_id]
-    room = params[:room]
-
-    if User.get(user).rooms.get(room)
-
-      #binding.pry
-      content_type :json
-      #if params[:q] == 'newposts' 
-      Post.all(:room_id => room).to_json
-    end
-  end
+end
 
 get '/header' do
 
